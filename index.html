@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Calculadora</title>
+
+    <style>
+   
+    button{
+        margin: 3%;
+        background-color: white;
+        color:white;
+        border-radius: 8px;
+        padding:12px 28px;
+        font-size: 14px;
+        background-color: #008CBA;
+        box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+      
+       
+    }
+   
+   input{
+    width: 100%;
+    border-radius: 10px;
+    padding: 12px 20px;
+    margin: 6px 0;
+    box-sizing: border-box;
+    box-shadow: 0 8px 16px 0 rgba(133, 176, 240, 0.815), 0 6px 20px 0 rgba(133, 176, 240, 0.815);
+   }
+   .selecione{
+       margin: 3%;
+        background-color: white;
+        border-radius: 5px;
+        padding:3px 10px;
+        font-size: 14px;
+        background-color: #008CBA;
+        color:white;
+   }
+
+   
+   .calcu{
+ 
+   margin:10px auto 10px auto;
+   width: 30%;
+   border: solid black 1px;
+   padding: 3%;
+   background-image: url('fundo.jpg')
+   
+    }
+label{
+    color: white;
+}
+
+    </style>
+</head>
+<body>
+    
+    <div class="calcu" align="center">
+     <label for="oper"><b>Calculadora</b></label><p></p>
+     <br>
+        <select name="oper" id="oper" class="selecione">
+            <option value="operacao">Selecione operação</option>
+            <option value="somar">Somar</option>
+            <option value="subtrair">Subtrair</option>
+            <option value="multiplicar">Multiplicar</option>
+            <option value="dividir">Dividir</option>
+         </select>
+         <br>
+    <input type="text" id="textNum1" placeholder="Número 1"></input>
+    <br>
+    <br>
+    <input type="text" id="textNum2" placeholder="Número 2"></input>
+    <br>
+    <br>
+    <input class="text" id="res" placeholder="Resultado!" disabled></input>
+    <br>
+    <button onclick="limpa()" id="reset">Limpar</button>
+    <button onclick="calcula()" id="calcula">Calcular</button>
+   
+ </div>
+
+<Script>
+function calcula(oper){
+
+ var oper = document.getElementById("oper").value
+ var rep1 = document.getElementById("textNum1").value
+ var rep2 = document.getElementById("textNum2").value
+
+if(rep1 == "" & rep2 == "")
+document.getElementById("res").value = "Erro!"
+   else{
+  
+if(rep1 == "" && !isNaN(rep1))
+    document.getElementById("res").value = "Erro!"
+        else if (rep2 == "" && !isNaN(rep2))
+        {
+            document.getElementById("res").value = "Erro!"
+        }
+        else{
+
+
+    var num1 = rep1.replace(",",".")
+    var num2 = rep2.replace(",",".")
+
+    if (oper == "somar")
+
+        {
+            var res = parseInt(num1) + parseInt(num2);
+        }else{
+            if (oper == "subtrair") {
+                var res = parseInt(num1) - parseInt(num2);
+            
+                }else{
+                    if(oper == "multiplicar")
+                    {
+                    var res = parseInt(num1) * parseInt(num2);
+                
+                    }else{
+                        if(oper == "dividir")
+                        {
+                            var res = parseInt(num1) / parseInt(num2);
+                        
+                        }
+                } 
+
+            }
+
+        }
+        if (isNaN(res))
+        
+        {
+        
+         document.getElementById("res").value = "Não Entendi!"  
+         limpa()
+        }
+        else{
+
+         document.getElementById("res").value = parseInt(res);
+         //.toFixed(2);
+        }
+
+    }
+}
+}
+function limpa(){
+    document.getElementById("textNum1").value  = ""
+    document.getElementById("textNum2").value  = ""
+    document.getElementById("res").value = ""
+ }    
+</Script>
+   
+</body>
+</html>
